@@ -10,8 +10,6 @@
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="assets/javascript/game.js"></script>
 </head>
 
 <body>
@@ -21,24 +19,24 @@
             <br><br><br><br><br>
             <div class="row">
                 <div class="col-3">
-                        <img id="shipAction1" class="shipStats1" src="assets/images/shipAction1.png" alt="Ship 1"
-                            height="150px" width="150px" />
-                        <button type="button" class="nes-btn is-success">Halberd</button>
+                    <img id="shipAction1" class="shipStats1" src="assets/images/shipAction1.png" alt="Ship 1"
+                    height="150px" width="150px" />
+                    <button type="button" id="buttonShip1" class="nes-btn is-success">Halberd</button>
                 </div>
                 <div class="col-3">
-                        <img id="shipAction2" class="shipStats2" src="assets/images/shipAction2.png" alt="Ship 2"
-                            height="150px" width="150px" />
-                        <button type="button" class="nes-btn is-success">Switch</button>
+                    <img id="shipAction2" class="shipStats2" src="assets/images/shipAction2.png" alt="Ship 2"
+                    height="150px" width="150px" />
+                    <button type="button" id="buttonShip2" class="nes-btn is-success">Switch</button>
                 </div>
                 <div class="col-3">
-                        <img id="shipAction3" class="shipStats3" src="assets/images/shipAction3.png" alt="Ship 3"
-                            height="150px" width="150px" />
-                        <button type="button" class="nes-btn is-success">Snake</button>
+                    <img id="shipAction3" class="shipStats3" src="assets/images/shipAction3.png" alt="Ship 3"
+                    height="150px" width="150px" />
+                    <button type="button" id="buttonShip3" class="nes-btn is-success">Snake</button>
                 </div>
                 <div class="col-3">
-                        <img id="shipAction4" class="shipStats4" src="assets/images/shipAction4.png" alt="Ship 4"
-                            height="150px" width="150px" />
-                        <button type="button" class="nes-btn is-success">Larry</button>
+                    <img id="shipAction4" class="shipStats4" src="assets/images/shipAction4.png" alt="Ship 4"
+                    height="150px" width="150px" />
+                    <button type="button" id="buttonShip4" class="nes-btn is-success">Larry</button>
                 </div>
             </div>
             <br><br><br><br><br><br><br><br><br><br>
@@ -47,30 +45,32 @@
                     <p class="nes-container is-dark">
                         <!-- <img id="" class="" src="assets/images/shipAction4.png" alt="Ship 4"
                             height="150px" width="150px" /> -->
-                    </p>
-                </div>
-                <div class="col-2">
-                    <p class="nes-container is-rounded is-dark">
-                        <button type="button" class="nes-btn is-success">SHOOT!</button>
-                    </p>
-                </div>
-                <div class="col-2"></div>
-                <div class="col-2">
-                    <p class="nes-container is-rounded is-dark">
-                        <button type="button" class="nes-btn is-disabled">RETRY</button>
-                    </p>
-                </div>
-                <div class="col-3">
-                    <p class="nes-container is-dark">
-                        <div class="playerInstructions"></div>
-                        <div class="battleStats"></div>
-                        <div class="enemyDefeated"></div>
-                    </p>
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="nes-container is-rounded is-dark">
+                            <button type="button" id="buttonAttack" class="nes-btn is-success">SHOOT!</button>
+                        </p>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-2">
+                        <p class="nes-container is-rounded is-dark">
+                            <button type="button" id="buttonReset" class="nes-btn is-disabled">RETRY</button>
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="nes-container is-dark">
+                            <div class="playerInstructions"></div>
+                            <div class="battleStats"></div>
+                            <div class="enemyDefeated"></div>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-</body>
-
-</html>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="assets/javascript/game.js"></script>
+    </body>
+    
+    </html>

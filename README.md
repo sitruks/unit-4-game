@@ -1,5 +1,8 @@
 # unit-4-game
 
+Although I found the pseudocoding phase very beneficial, I could not save myself from completely customizing the UI and game flow.
+As such, I will return to this project to add the missing capabilities.
+
 
 |-------------------------------------------------|
 | Gathered art assets from the following sources: |
