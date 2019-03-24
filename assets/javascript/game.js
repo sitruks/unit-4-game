@@ -44,46 +44,60 @@ $(document).ready(function() {
         this.shipID = shipID;
     };
     
-    var halberd = ShipStats('Halberd', 150, 10, 1, "shipAction1", "ship1");
+    var halberd = new ShipStats('Halberd', 150, 10, 1, "shipAction1", "ship1");
     // console.log(halberd);
-    var rufus = ShipStats('Rufus', 175, 10, 2, "shipAction2", "ship2");
+    var rufus = new ShipStats('Rufus', 175, 10, 2, "shipAction2", "ship2");
     // console.log(rufus);
-    var snake = ShipStats('Snake', 200, 10, 3, "shipAction3", "ship3");
+    var snake = new ShipStats('Snake', 200, 10, 3, "shipAction3", "ship3");
     // console.log(snake);
-    var larry = ShipStats('Larry', 125, 10, 4, "shipAction4", "ship4");
+    var larry = new ShipStats('Larry', 125, 40, 4, "shipAction4", "ship4");
     // console.log(larry);
+
+    // Test variable pull from array
+    // console.log(rufus.hp);
+
     
     var shipsAll = [halberd, rufus, snake, larry];
-    // Test variable pull from array
-    // var rufusHP = shipsAll[1].hp;
-    // console.log(rufusHP);
-    var rufusHP = shipsAll;
-    console.log(rufusHP);
-
-
-    // for (let i = 0; i < shipsAll.length; i++) {
-    //     return 
-    // }
-  
+    // console.log(shipsAll);
+    
+    
+    function shipAssignment () {
+        for (let i = 0; i < shipsAll.length; i++) {
+            // console.log(shipsAll[i].name);
+            // console.log(shipsAll[i].hp);
+            // console.log(shipsAll[i].attackBase);
+            // console.log(shipsAll[i].shipNumber);
+            // console.log(shipsAll[i].shipActionID);
+            // console.log(shipsAll[i].shipID);
+            
+            var shipHP = $(shipsAll[i].hp);
+            $('.shipHP').append(shipHP[i]);
+            
+        }
+    };
+    
+    shipAssignment();
+    
+    
     var selectPlayer = false;
     var selectEnemy = false;
-
+    
     var playerInstructions = [
         "Choose your ship",
         "Choose your enemy",
         "Click the button to retry!",
     ];
     
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 });
 
 
@@ -93,31 +107,51 @@ $(document).ready(function() {
 
 // // buttons that alert with TF logic
 // $(document).ready(function clickButton() {
-//     $("#buttonShip1").click(function(){
-//         if (confirm("Select HALBERD?"));
-//     }); 
-//     $("#buttonShip2").click(function(){
-//         if (confirm("Select RUFUS?"));
-//     }); 
-//     $("#buttonShip3").click(function(){
-//         if (confirm("Select SNAKE?"));
-//     }); 
-//     $("#buttonShip4").click(function(){
-//         if (confirm("Select LARRY?"));
-//     }); 
-// });
+    //     $("#buttonShip1").click(function(){
+        //         if (confirm("Select HALBERD?"));
+        //     }); 
+        //     $("#buttonShip2").click(function(){
+            //         if (confirm("Select RUFUS?"));
+            //     }); 
+            //     $("#buttonShip3").click(function(){
+                //         if (confirm("Select SNAKE?"));
+                //     }); 
+                //     $("#buttonShip4").click(function(){
+                    //         if (confirm("Select LARRY?"));
+                    //     }); 
+                    // });
+                    
+                    
+                    // appply function from mdn
+                    // function ShipAttacks(obj, objName) {
+                        //     var result = '';
+                        //     for (var i in obj) {
+                            //       // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
+                            //       if (obj.hasOwnProperty(i)) {
+                                //         result += objName + '.' + i + ' = ' + obj[i] + '\n';
+                                //       }
+                                //     }
+                                //     return result;
+                                // };
+                                
+                                // console.log(ShipAttacks());
 
+// $(".number").on("click", function() {
 
-// appply function from mdn
-// function ShipAttacks(obj, objName) {
-//     var result = '';
-//     for (var i in obj) {
-//       // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
-//       if (obj.hasOwnProperty(i)) {
-//         result += objName + '.' + i + ' = ' + obj[i] + '\n';
-//       }
+//     // Check if we've already run a calculation, if so... we'll just.
+//     if (isCalculated) {
+//         return false;
 //     }
-//     return result;
-// };
 
-// console.log(ShipAttacks());
+//     // If operator is chosen, we should be writing the secondNumber, otherwise, the firstNumber
+//     if (isOperatorChosen) {
+//         secondNumber += $(this).val();
+//         $("#second-number").text(secondNumber);
+
+//     }
+//     else {
+//         firstNumber += $(this).val();
+//         $("#first-number").text(firstNumber);
+//     }
+
+//     });
