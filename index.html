@@ -16,45 +16,60 @@
     <div class="nes-container with-title is-dark">
         <p class="title">Spaceship Battle Game!!!</p>
         <div id="gameMenu">
-            <br><br><br><br><br>
-            <h2>Choose Your Character</h2>
-            <div id="all-ships" class="row"></div>
-            <h2>Choose Your Enemy</h2>
-            <div id="available-enemies" class="row"></div>
-            <h2>Selected Enemy</h2>
-            <div id="selectDefender" class="row"></div>
-            <br><br><br><br><br>
-            <br><br><br><br><br>
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-2">
-                    <p class="nes-container is-rounded is-dark">
-                        <button type="button" id="buttonAttack" class="nes-btn is-success">SHOOT!</button>
-                    </p>
+
+            <div id="playerSelectionMenu">
+                <br><br>
+                <div class="row">
+                    <div class="col-6">
+                        <h2 class="menuText">Choose Your Character</h2>
+                        <div id="allShips"></div>
+                    </div>
+                    <div class="col-6">
+                        <h2 class="menuText">Selected Enemy</h2>
+                        <div id="selectedDefender"></div>
+                    </div>
                 </div>
-                <div class="col-2"></div>
-                <div class="col-2">
-                    <p class="nes-container is-rounded is-dark">
-                        <button type="button" id="buttonReset" class="nes-btn is-disabled">RETRY</button>
-                    </p>
-                </div>
-                <div class="col-3"></div>
             </div>
-            <br><br>
-    
-            <div class="row">
-                <div class="col-3">
-                    <p class="nes-container is-dark">
-                        <div id="selectPlayer"></div>
-                    </p>
+
+            <br><br><br><br><br>
+            <div id="userInputMenu">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-2">
+                        <p class="nes-container is-rounded is-dark">
+                            <button type="button" id="buttonAttack" class="nes-btn is-success">SHOOT!</button>
+                        </p>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-2">
+                        <p class="nes-container is-rounded is-dark">
+                            <button type="button" id="buttonReset" class="nes-btn is-disabled">RETRY</button>
+                        </p>
+                    </div>
+                    <div class="col-3"></div>
                 </div>
-                <div class="col-2"></div>
-                <div class="col-2"></div>
-                <div class="col-2"></div>
-                <div class="col-3">
-                    <p class="nes-container is-dark">
-                        <div class="enemyDefeated"></div>
-                    </p>
+                <div class="row">
+                    <div class="col-3">
+                        <h2 class="menuText">Selected Player</h2>
+                        <div id="selectedPlayer"></div>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-2"></div>
+                    <div class="col-2"></div>
+                    <div class="col-3">
+                        <h2 class="availableText">Available Enemies</h2>
+                        <div id="availableEnemies"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-2"></div>
+                    <div class="col-2"></div>
+                    <div class="col-2"></div>
+                    <div class="col-3">
+                        <h2 class="defeatText">Defeated Enemies</h2>
+                        <div id="enemyDefeated"></div>
+                    </div>
                 </div>
             </div>
         </div>

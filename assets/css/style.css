@@ -27,13 +27,34 @@ body {
 
 /* CONTAINER FORMATTING */
 
-div#gameMenu {
+#gameMenu {
     background: url('../images/spaceBattleBackgroundClear.png');
     background-color: #000000;
     background-position: center;
     max-width: 100%;
     height: 1100px;
     
+}
+
+#playerSelectionMenu,
+#userInputMenu {
+    height: 500px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+.menuText {
+    color: blue;
+}
+
+.availableText {
+    color: orangered;
+}
+
+.defeatText {
+    color: red;
 }
 
 div.nes-container.with-title.is-dark {

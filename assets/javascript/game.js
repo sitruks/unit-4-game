@@ -8,6 +8,8 @@
 // //// TODO: BACKGROUND CSS FORMATING: CHANGE #gameMenu TO THE CLEAR IMAGE ONE, MAKE THE BACKGROUND ANIMATE RED ON CLICK.
 // //// TODO: BACKGROUND CSS FORMATING: ADDTIONALLY, MAKE THE BACKGROUND ANIMATE RED ON MOUSE ACTIVITY --   // document.body.style.backgroundColor = "rgb("+e.offsetX+","+e.offsetY+", 40)";.
 // //// TODO: OBVIOUSLY MUSIC AND SFX ON BUTTON CLICK
+// //// TODO: FIX BUG THAT ALLOWS resetButton TO BE CLICKED WHEN NOT APPROPRIATE
+
 function ShipStats(name, hp, attackBase, attackCounter, attackSpecial, shipActionID, shipID, shipNumber, shipAttackImage, shipImage) {
     this.name = name;
     this.hp = hp;
@@ -23,25 +25,24 @@ function ShipStats(name, hp, attackBase, attackCounter, attackSpecial, shipActio
 
 var halberd = new ShipStats('Halberd', 150, 50, 15, .7, "shipAction1", "ship1", 1, "./assets/images/shipAction1.png", "./assets/images/ship1.png");
 // console.log(halberd);
-var rufus = new ShipStats('Rufus', 175, 7.5, 15, 1.5, "shipAction2", "ship2", 2, "./assets/images/shipAction2.png", "./assets/images/ship2.png");
+var rufus = new ShipStats('Rufus', 175, 8, 15, 1.5, "shipAction2", "ship2", 2, "./assets/images/shipAction2.png", "./assets/images/ship2.png");
 // console.log(rufus); console.log(rufus.hp); console.log(typeof rufus.hp);
 var snake = new ShipStats('Snake', 200, 10, 15, 1.2, "shipAction3", "ship3", 3, "./assets/images/shipAction3.png", "./assets/images/ship3.png");
 // console.log(snake);
 var larry = new ShipStats('Larry', 125, 40, 15, 1, "shipAction4", "ship4", 4, "./assets/images/shipAction4.png", "./assets/images/ship4.png");
 // console.log(larry);
-
 const shipInitialState = {
     halberd,
     rufus,
     snake,
-    larry,
+    larry
 };
 console.log(shipInitialState)
 
-// THE GAME VALUES INPUT
+// THE OBJECT CONTAINER FOR SHIP/ENEMY TO BE SELECTED
 let allShipStats = {};
 
-// VARIABLES AND FUNCTIONS RELATED TO USER INPUT WHICH AFFECT THE STATE OF THE GAME
+// GLOBAL VARIABLES AND FUNCTIONS RELATED TO USER INPUT WHICH AFFECT THE STATE OF THE GAME
 const game = {
     status: {
         gameover: false,
@@ -82,22 +83,22 @@ const game = {
 };
 
 $(document).ready(function () {
-
+    // FUNCTION THAT DYNAMICALLY POPULATES THE SHIP CARDS
     function bindCharacterClick(box) {
-        // Binds character box click, which will move it to appropriate row based on game status
+        // APPEND SELECTED PLAYER AND ENEMY TO ID TAGS IN HTML AND ADD CLASSES FOR GAMEPLAY
         box.click(function () {
             if (!game.selectShip) {
-                box.addClass("chosen-character");
-                $("#all-ships").children(".character-box").each(function () {
+                box.addClass("selectedPlayer");
+                $("#allShips").children(".shipBox").each(function () {
                     if (!$(this).is(box)) {
                         $(this).addClass("enemy")
-                        $("#available-enemies").append($(this));
+                        $("#availableEnemies").append($(this));
                     }
                 });
                 game.selectShip = box.attr("name");
             } else if (!game.selectEnemy && game.selectShip) {
-                box.addClass("selectDefender");
-                $("#selectDefender").append(box);
+                box.addClass("selectedDefender");
+                $("#selectedDefender").append(box);
                 game.selectEnemy = box.attr("name");
             }
         })
@@ -105,20 +106,18 @@ $(document).ready(function () {
 
     function resetGame() {
 
-        // Reset game status
+        // RESET ALL GAME VARIABLES
         game.resetGameState();
-
-        // Remove character boxes from all rows
-        [$("#all-ships"), $("#available-enemies"), $("#selectDefender"), $("#enemyDefeated")].forEach(shipGraphicAsset => {
+        // REMOVE SHIP BOXES FROM DISPLAY
+        [$("#allShips"), $("#availableEnemies"), $("#selectDefender"), $("#enemyDefeated")].forEach(shipGraphicAsset => {
             shipGraphicAsset.empty();
         });
-
-        // FUNCTION THAT DEFINES ALL THE STATS FROM JSON OBJECTS TO BE PULLED INTO EACH SHIP'S DISPLAY
+        // FUNCTION THAT DEFINES ALL THE STATS FROM shipStats JSON OBJECTS TO BE PULLED INTO EACH SHIP'S DISPLAY
         allShipStats = JSON.parse(JSON.stringify(shipInitialState));
         Object.values(allShipStats).forEach(stats => {
             game.allShips++;
 
-            const characterBox = $("<div>");
+            const shipBox = $("<div>");
             const name = $("<div>");
             const hp = $("<div>");
             const attack = $("<div>");
@@ -133,8 +132,8 @@ $(document).ready(function () {
                 .text("Attack: " + stats.attackBase)
                 .attr("class", "attack");
 
-            characterBox
-                .addClass("character-box")
+            shipBox
+                .addClass("shipBox")
                 .attr("name", stats.name)
                 .attr("id", stats.name)
                 .append(name)
@@ -142,19 +141,19 @@ $(document).ready(function () {
                 .append(attack)
                 .append(image)
 
-            bindCharacterClick(characterBox);
+            bindCharacterClick(shipBox);
 
-            $("#all-ships").append(characterBox);
+            $("#allShips").append(shipBox);
         });
     }
 
 
-    // Resets game display and internal game status
+    // RESET GAME
     $("#buttonReset").click(() => {
         resetGame();
     });
 
-    // Logic and display handling fight button click
+    // FUNCTION THAT CONTROLS buttonAttack CLICKS AND THE RELATED ACTIONS
     $("#buttonAttack").click(() => {
         if (game.status.gameover) {
             return;
@@ -180,18 +179,17 @@ $(document).ready(function () {
             $("#selectDefender").empty();
             game.selectEnemy = "";
             game.defeatEnemies++;
-            $("#enemyDefeated").text("You have defeated " + selectDefenderStr + "! Choose another enemy to continue.");
+            $("#enemyDefeated").text("You have defeated " + selectDefenderStr + "! Select another foe...");
 
         } else {
             $("#" + selectDefenderStr)
                 .children(".hp")
                 .text("Health: " + selectDefender.hp);
             $("#enemyDefeated").text("You attacked " + selectDefenderStr + " for " + yourAttack + " damage. "
-                + selectDefenderStr + " attacked you for back for " + selectDefenderAttack + " damage.");
+                + selectDefenderStr + " attacked you back for " + selectDefenderAttack + " damage.");
         }
 
         // DISPLAY NEW HP AND ATTACK
-        
         const selectShipObj = $("#" + selectShipStr);
         selectShipObj
             .children(".hp")
