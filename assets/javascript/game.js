@@ -1,7 +1,13 @@
 // ////
 // //// 
 // //// DEFINE ALL THE VARIABLES RELATED TO THE SHIPS
-
+// //// TODO: MAKE IT WORK!! :)
+// //// TODO: INCORPORATE THE CONSTRUCTOR FUNCTION AND ENEMY POPULATION INTO ONE FUNCTION
+// //// TODO: CHANGE THE IMAGE OF SELECTED TO THE NON-ACTION IMAGE TYPE
+// //// TODO: WITTY ON CLICK BANTER
+// //// TODO: BACKGROUND CSS FORMATING: CHANGE #gameMenu TO THE CLEAR IMAGE ONE, MAKE THE BACKGROUND ANIMATE RED ON CLICK.
+// //// TODO: BACKGROUND CSS FORMATING: ADDTIONALLY, MAKE THE BACKGROUND ANIMATE RED ON MOUSE ACTIVITY --   // document.body.style.backgroundColor = "rgb("+e.offsetX+","+e.offsetY+", 40)";.
+// //// TODO: OBVIOUSLY MUSIC AND SFX ON BUTTON CLICK
 function ShipStats(name, hp, attackBase, attackCounter, attackSpecial, shipActionID, shipID, shipNumber, shipAttackImage, shipImage) {
     this.name = name;
     this.hp = hp;
@@ -18,9 +24,7 @@ function ShipStats(name, hp, attackBase, attackCounter, attackSpecial, shipActio
 var halberd = new ShipStats('Halberd', 150, 50, 15, .7, "shipAction1", "ship1", 1, "./assets/images/shipAction1.png", "./assets/images/ship1.png");
 // console.log(halberd);
 var rufus = new ShipStats('Rufus', 175, 7.5, 15, 1.5, "shipAction2", "ship2", 2, "./assets/images/shipAction2.png", "./assets/images/ship2.png");
-// console.log(rufus);
-// Test variable pull from array
-// console.log(rufus.hp);
+// console.log(rufus); console.log(rufus.hp); console.log(typeof rufus.hp);
 var snake = new ShipStats('Snake', 200, 10, 15, 1.2, "shipAction3", "ship3", 3, "./assets/images/shipAction3.png", "./assets/images/ship3.png");
 // console.log(snake);
 var larry = new ShipStats('Larry', 125, 40, 15, 1, "shipAction4", "ship4", 4, "./assets/images/shipAction4.png", "./assets/images/ship4.png");
@@ -37,6 +41,7 @@ console.log(shipInitialState)
 // THE GAME VALUES INPUT
 let allShipStats = {};
 
+// VARIABLES AND FUNCTIONS RELATED TO USER INPUT WHICH AFFECT THE STATE OF THE GAME
 const game = {
     status: {
         gameover: false,
